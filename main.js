@@ -26,13 +26,15 @@ function post(path, value) {
   });
 }
 
+const audio = new Audio('./start.mp3');
+
 function evtypelog(event) {
   console.log(event.type);
 }
 
 let isCommandMode = false;
 
-document.addEventListener("DOMContentLoaded", () => {
+function startInput() {
   const $input = document.querySelector("#input");
   /** @type {SpeechRecognition} */
   const re = new (webkitSpeechRecognition || SpeechRecognition)();
@@ -66,6 +68,9 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       if (result.includes(commandWord)) {
         isCommandMode = true;
+        setTimeout(() => {
+          audio.play();
+        }, 0);
       }
     }
   });
@@ -74,4 +79,4 @@ document.addEventListener("DOMContentLoaded", () => {
     re.start();
   });
   re.start();
-});
+};
