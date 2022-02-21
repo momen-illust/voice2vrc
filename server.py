@@ -1,6 +1,7 @@
 from http.server import SimpleHTTPRequestHandler, HTTPServer
 from pythonosc import udp_client
 import json
+import webbrowser
 
 ip = '127.0.0.1'
 port = 9090
@@ -24,4 +25,6 @@ class PostHandler(SimpleHTTPRequestHandler):
 
 
 if __name__ == '__main__':
+    print(f"Staring the server at http://{ip}:{port}")
+    webbrowser.open("https://localhost:9090")
     HTTPServer((ip, port), PostHandler).serve_forever()
