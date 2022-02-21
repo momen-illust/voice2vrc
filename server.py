@@ -26,5 +26,5 @@ class PostHandler(SimpleHTTPRequestHandler):
 
 if __name__ == '__main__':
     print(f"Staring the server at http://{ip}:{port}")
-    webbrowser.open("https://localhost:9090")
+    webbrowser.open("http://localhost:9090")
     HTTPServer((ip, port), PostHandler).serve_forever()
