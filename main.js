@@ -2,12 +2,12 @@ commandWord = "着替えスイッチ"
 
 const commands = [
   {
-    if: (t) => t.includes("着る") || t.includes("切る"),
+    if: (t) => t.includes("アウター") && (t.includes("着る") || t.includes("切る")),
     path: "/avatar/parameters/Outer",
     value: 1,
   },
   {
-    if: (t) => t.includes("脱ぐ"),
+    if: (t) => t.includes("アウター") && t.includes("脱ぐ"),
     path: "/avatar/parameters/Outer",
     value: 0,
   },
@@ -62,6 +62,7 @@ function startInput() {
         }
         if (!matched) {
           $input.textContent = "聞き取れませんでした"
+          audio.play();
         }
         isCommandMode = false;
       });
